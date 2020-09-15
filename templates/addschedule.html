@@ -1,0 +1,76 @@
+{% extends "layouts/header.html" %}
+{% block content %}
+ 
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Schedule</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#">Add Schedule</a></li>
+                </ol>
+              </nav>
+            </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="col-xl-12 order-xl-1">
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                 
+                 
+                </div>
+              </div>
+              <div class="card-body">
+                <form action="/add" method="POST">
+                  {{ form.hidden_tag() }}
+                  {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ category }}">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+                  <h6 class="heading-small text-muted mb-4">Schedule information</h6>
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-username">Enter Day</label>
+                          <input type="text" id="input-username" class="form-control" placeholder="Day of the week ">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-name">Enter Pick up Areas</label>
+                          <input type="text" id="input-name" class="form-control" placeholder="Location">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                              <label class="form-control-label" for="input-name">Duration</label>
+                              <input type="text" id="input-name" class="form-control" placeholder="8am to 4pm">
+                            </div>
+                          </div>
+                    </div>
+                 <button class="btn btn-primary">Post</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      <!-- Dark table -->
+     
+      {% endblock content %}
